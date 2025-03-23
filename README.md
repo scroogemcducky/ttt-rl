@@ -1,4 +1,15 @@
-# Tic Tac Toe with Reinforcement Learning
+# Forked from antirez
+To get more familiar with reinforcement learning and C.
+
+Preliminary plans
+- [ ] simple inferencing with python
+- [ ] frontend to play the game
+- [ ] explore and experiment with different architectural choices (will probably have to expand the domain to give more space for improvements)
+
+[37 Implementation Details of PPO](https://iclr-blog-track.github.io/2022/03/25/ppo-implementation-details/)
+
+# Original README:
+## Tic Tac Toe with Reinforcement Learning
 
 *The only winning move is not to play*
 
