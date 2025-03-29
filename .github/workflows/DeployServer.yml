@@ -19,7 +19,6 @@ env:
 jobs:
   build-and-push:
     runs-on: ubuntu-latest
-    # REMOVED outputs: section
 
     steps:
     - name: Checkout code
@@ -59,7 +58,7 @@ jobs:
         cache-from: type=gha
         cache-to: type=gha,mode=max
 
-    # REMOVED "Prepare image URI output..." step
+  
 
   deploy:
     needs: build-and-push # This dependency ensures build job succeeded before deploying
