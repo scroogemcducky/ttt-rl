@@ -2,13 +2,12 @@ import numpy as np
 import struct
 import sys
 
-# Neural network parameters from C code
+# Neural network parameters - must match C code
 NN_INPUT_SIZE = 18
 NN_HIDDEN_SIZE = 100
 NN_OUTPUT_SIZE = 9
 
-class TicTacToeNN:
-    
+class TicTacToeNN:  
     def __init__(self):
         self.weights_ih = np.zeros((NN_INPUT_SIZE, NN_HIDDEN_SIZE))
         self.weights_ho = np.zeros((NN_HIDDEN_SIZE, NN_OUTPUT_SIZE))
