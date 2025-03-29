@@ -8,6 +8,7 @@ NN_HIDDEN_SIZE = 100
 NN_OUTPUT_SIZE = 9
 
 class TicTacToeNN:
+    
     def __init__(self):
         self.weights_ih = np.zeros((NN_INPUT_SIZE, NN_HIDDEN_SIZE))
         self.weights_ho = np.zeros((NN_HIDDEN_SIZE, NN_OUTPUT_SIZE))
