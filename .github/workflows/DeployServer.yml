@@ -22,7 +22,7 @@ jobs:
   build-and-push:
     runs-on: ubuntu-latest
     outputs:
-      image: ${{ steps.meta.outputs.tags }} # Get tags from meta step
+      image_uri: ${{ env.DOCKER_HUB_USERNAME }}/${{ env.DOCKER_HUB_REPO }}:latest # Get tags from meta step
 
     steps:
     - name: Checkout code
@@ -32,7 +32,7 @@ jobs:
       uses: docker/setup-qemu-action@v2
 
     - name: Set up Docker Buildx
-      id: buildx # Give ID to buildx step
+      id: buildx 
       uses: docker/setup-buildx-action@v2
 
     - name: Login to Docker Hub
@@ -60,8 +60,8 @@ jobs:
         push: true
         tags: ${{ steps.meta.outputs.tags }} # Use tags from meta step
         labels: ${{ steps.meta.outputs.labels }} # Use labels from meta step
-        cache-from: type=gha # Optional: enable build cache
-        cache-to: type=gha,mode=max # Optional: enable build cache
+        cache-from: type=gha 
+        cache-to: type=gha,mode=max
 
 
   deploy:
@@ -94,7 +94,7 @@ jobs:
       with:
         task-definition: server/task-definition.json # Path to your task definition file template
         container-name: ${{ env.CONTAINER_NAME }} # Use env var
-        image: ${{ needs.build-and-push.outputs.image }} # Get image name/tag from build job output
+        image: ${{ needs.build-and-push.outputs.image_uri }} # Get image name/tag from build job output
 
     - name: Deploy Amazon ECS task definition
       uses: aws-actions/amazon-ecs-deploy-task-definition@v1
