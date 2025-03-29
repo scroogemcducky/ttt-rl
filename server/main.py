@@ -27,6 +27,10 @@ class Move(BaseModel):
 async def root():
     return {"board": [0, 1]}
 
+@app.get("/testing")
+async def test():
+    return {"board": [1, 1]}
+
 @app.post("/")
 async def make_move(move: Move):
     board = move.board
