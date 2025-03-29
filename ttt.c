@@ -523,6 +523,30 @@ int get_random_move(GameState *state) {
     }
 }
 
+/* Save neural network weights to a file. */
+void save_weights(NeuralNetwork *nn, const char *filename) {
+    FILE *f = fopen(filename, "wb");
+    if (f == NULL) {
+        printf("Error opening file %s for writing\n", filename);
+        return;
+    }
+    
+    // Write weights_ih
+    fwrite(nn->weights_ih, sizeof(float), NN_INPUT_SIZE * NN_HIDDEN_SIZE, f);
+    
+    // Write weights_ho
+    fwrite(nn->weights_ho, sizeof(float), NN_HIDDEN_SIZE * NN_OUTPUT_SIZE, f);
+    
+    // Write biases_h
+    fwrite(nn->biases_h, sizeof(float), NN_HIDDEN_SIZE, f);
+    
+    // Write biases_o
+    fwrite(nn->biases_o, sizeof(float), NN_OUTPUT_SIZE, f);
+    
+    fclose(f);
+    printf("Neural network weights saved to %s\n", filename);
+}
+
 /* Play a game against random moves and learn from it.
  *
  * This is a very simple Montecarlo Method applied to reinforcement
@@ -620,6 +644,7 @@ int main(int argc, char **argv) {
     if (random_games > 0) train_against_random(&nn, random_games);
 
     // Play game with human and learn more.
+    /*
     while(1) {
         char play_again;
         play_game(&nn);
@@ -627,6 +652,7 @@ int main(int argc, char **argv) {
         printf("Play again? (y/n): ");
         scanf(" %c", &play_again);
         if (play_again != 'y' && play_again != 'Y') break;
-    }
+    }*/
+    save_weights(&nn, "ttt_weights.bin");
     return 0;
 }
