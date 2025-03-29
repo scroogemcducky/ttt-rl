@@ -12,9 +12,8 @@
       {
         "name": "ttt-rl-container",           
         "image": "ramibl/ttt-rl-server:latest", 
-        "cpu": 0,                               
-        "memory": 3072,                         
-        "memoryReservation": 512,              
+        "cpu": 0,                                                    
+        "memoryReservation": 1024,              
         "portMappings": [
           {
             "containerPort": 8000,
