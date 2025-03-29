@@ -1,0 +1,37 @@
+{
+    "family": "ttt-rl-task",
+    "networkMode": "awsvpc",
+    "requiresCompatibilities": [
+      "FARGATE"
+    ],
+    "cpu": "512",           
+    "memory": "1024",         
+    "executionRoleArn": "ecsTaskExecutionRole", 
+    "taskRoleArn": null,      
+    "containerDefinitions": [
+      {
+        "name": "ttt-rl-container",           
+        "image": "ramibl/ttt-rl-server:latest", 
+        "cpu": 0,                               
+        "memory": 3072,                         
+        "memoryReservation": 512,              
+        "portMappings": [
+          {
+            "containerPort": 8000,
+            "protocol": "tcp",
+            "appProtocol": "http"             
+          }
+        ],
+        "essential": true,
+        "logConfiguration": {
+          "logDriver": "awslogs",
+          "options": {
+            "awslogs-group": "/ecs/ttt-rl-task",     
+            "awslogs-region": "us-east-1",           
+            "awslogs-stream-prefix": "ecs"           
+          }
+        }
+
+      }
+    ]
+  }
