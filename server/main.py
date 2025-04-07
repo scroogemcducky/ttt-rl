@@ -7,7 +7,8 @@ app = FastAPI()
 # Add CORS middleware
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["https://rl-client.pages.dev"],  # For development only - restrict this in production
+    # allow_origins=["https://rl-client.pages.dev"],
+    allow_origins=["*"]
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
