@@ -2,9 +2,9 @@
 To get more familiar with reinforcement learning and C.
 
 Preliminary plans
-- [ ] simple inferencing with python
-- [ ] frontend to play the game
 - [ ] explore and experiment with different architectural choices (will probably have to expand the domain to give more space for improvements)
+
+[https://e16cebc2.rl-client.pages.dev/](https://e16cebc2.rl-client.pages.dev/)
 
 [37 Implementation Details of PPO](https://iclr-blog-track.github.io/2022/03/25/ppo-implementation-details/)
 
